@@ -34,7 +34,7 @@ NotEqualAll :- It indicate if all conditoion($SearchData) not satisfied then fun
 
 StartLikeAny :- It indicate if any condtion value match with entire/staring value of given column then it return data
 
-LikeLastAny :- It indicate if any condtion value match with entire/last value of given column then it return data
+LikeLastAny :- It indicate if any condtion value match with entire/last value of given column then it return data 
 
 StartLikeLastAny :- It indicate if any condtion value match with entire/starting/last/middle value of given column then it return data
 
