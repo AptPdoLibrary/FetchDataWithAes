@@ -5,7 +5,7 @@
 	*@Author - Arpit sharma
 	*/
 
-	function FetchDataWithAes($Condtion,$FetchColumn,$DatabaseConnection,$DbTableName,$EncodeAndEncryptPass,$CheckFor = 'any' ,$CheckUserStatus = NULL,$FetchCount = NULL,$AcceptNullCondtion=false){
+	function FetchDataWithAes($Condtion,$FetchColumn,$DatabaseConnection,$DbTableName,$EncodeAndEncryptPass,$CheckFor = 'any' ,$FetchCount = NULL,$AcceptNullCondtion=false){
 		if((strlen($Condtion) == 0 && $Condtion != 'none') || (strlen($FetchColumn) == 0 && $FetchColumn != NULL)){
 			return ["status"=>"Error","msg"=>"Invalid Given Data formet detect!","code"=>400];
 		}
@@ -128,9 +128,6 @@
 		}
 
 		if(isset($DatabaseConnection) && isset($DbTableName) && (isset($StmtFetchColumnKey) || $FetchColumn == NULL) && isset($StmtCondtionValue) && isset($StmtCondtionKey) && isset($StmtCondtionKeyAndPreparedKey) && isset($EncodeAndEncryptPass)){
-			if($CheckUserStatus !== NULL){
-				$StmtCondtionKeyAndPreparedKey = '('.$StmtCondtionKeyAndPreparedKey.')  && Status = AES_ENCRYPT(:Status, :EncodeAndEncryptPass)';
-			}
 			//return_response("SELECT $StmtFetchColumnKey FROM $DbTableName WHERE $StmtCondtionKeyAndPreparedKey");
 			if($FetchColumn == NULL){
 				$stmt = $DatabaseConnection->prepare("SELECT NULL FROM $DbTableName WHERE $StmtCondtionKeyAndPreparedKey");
@@ -164,9 +161,6 @@
 				}else{
 					return ["status"=>"Error","msg"=>"Invalid CheckFor details detect!","code"=>400];
 				}
-			}
-			if($CheckUserStatus !== NULL){
-				$stmt->bindValue(':Status', $CheckUserStatus, PDO::PARAM_STR);
 			}
 			if($stmt->execute()){
 				if($stmt->rowCount() > 0){
