@@ -38,19 +38,13 @@ LikeLastAny :- It indicate if any condtion value match with entire/last value of
 
 StartLikeLastAny :- It indicate if any condtion value match with entire/starting/last/middle value of given column then it return data
 
-CheckUserStatus :-
-$CheckUserStatus = 'Active or Pending or Deleted or Any other custum value';
-Active - If CheckUserStatus is Active then it check Status column value must be equal Active. If there is no Status column then it return error. If table can not conation Status column then use Null ($CheckUserStatus = NULL)
-
-Pending - If CheckUserStatus is Pending then it check Status column value must be equal Pending. If there is no Status column then it return error. If table can not conation Status column then use Null ($CheckUserStatus = NULL)
-
 FetchCount :-
 $FetchCount = 'all';
 By default FetchCount  is NULL. If FetchCount is null then it return only one row in reasult
 
 all - Then it return all rows which satisfied the given condtion($SearchData)
 
-$Response = FetchDataWithAes($Condtion,$FatchColumn,$DatabaseConnection,$DbTableName,$EncodeAndEncryptPass,$CheckFor = 'any' ,$CheckUserStatus = NULL,$FetchCount = NULL);
+$Response = FetchDataWithAes($Condtion,$FatchColumn,$DatabaseConnection,$DbTableName,$EncodeAndEncryptPass,$CheckFor = 'any' ,=$FetchCount = NULL);
 
 Check Response :
 if($Response['status'] === 'Success' && $Response['code'] === 200){
