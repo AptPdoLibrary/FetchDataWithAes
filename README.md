@@ -6,11 +6,11 @@ Call function :
 
 Example :-
 
-$SearchData = "Username::::$Username::,::UserId::::$UserId"; (It is use for condtion like Where Username equal to $Username, If Given column not available in table then it return an error)
+$Condtion = "Username::::$Username::,::UserId::::$UserId"; (It is use for condtion like Where Username equal to $Username, If Given column not available in table then it return an error)
 
 none - Use none for get data from all contion of given table
 
-$RequiredData = 'Name::::Class::::Gander'; (It is use to which get Data from table. If Given column not available in table then it return an error)
+$FatchColumn = 'Name::::Class::::Gander'; (It is use to which get Data from table. If Given column not available in table then it return an error)
 
 DatabaseConnection :-
 $DatabaseConnection is a pdo connection object
@@ -50,7 +50,7 @@ By default FetchCount  is NULL. If FetchCount is null then it return only one ro
 
 all - Then it return all rows which satisfied the given condtion($SearchData)
 
-$Response = FetchDataWithAes($SearchData,$RequiredData,$DatabaseConnection,$DbTableName,$EncodeAndEncryptPass,$CheckFor = 'any' ,$CheckUserStatus = NULL,$FetchCount = NULL);
+$Response = FetchDataWithAes($Condtion,$FatchColumn,$DatabaseConnection,$DbTableName,$EncodeAndEncryptPass,$CheckFor = 'any' ,$CheckUserStatus = NULL,$FetchCount = NULL);
 
 Check Response :
 if($Response['status'] === 'Success' && $Response['code'] === 200){
