@@ -1,7 +1,7 @@
 <?php
 	/*
 	*@filename - FetchDataWithAes.php
-	*@Des - It return required data where condtion(Search Data) match in given table. If there reason if process failed
+	*@Des - It return required data where condtion(Search Data) match in given table. If there reason if process failed.
 	*@Author - Arpit sharma
 	*/
 
